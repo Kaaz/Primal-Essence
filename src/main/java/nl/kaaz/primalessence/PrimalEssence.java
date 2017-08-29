@@ -1,6 +1,5 @@
 package nl.kaaz.primalessence;
 
-import me.philippheuer.twitch4j.TwitchClient;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -29,7 +28,6 @@ public class PrimalEssence {
 	@SidedProxy(clientSide = "nl.kaaz.primalessence.proxies.ClientProxy", serverSide = "nl.kaaz.primalessence.proxies.ServerProxy")
 	public static CommonProxy proxy;
 	private Logger logger;
-	private TwitchClient twitchClient;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
