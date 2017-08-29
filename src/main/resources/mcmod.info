@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "primalessence",
+    "name": "Primal Essence",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/kaaz/primalessence",
+    "updateUrl": "",
+    "authorList": [
+      "Kaaz"
+    ],
+    "credits": "",
+    "logoFile": "assets/primalessence/logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
