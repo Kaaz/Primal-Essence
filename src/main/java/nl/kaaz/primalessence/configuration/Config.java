@@ -10,12 +10,20 @@ public class Config {
 
 	@Comment({"Twitch integration"})
 	public static class Twitch {
+
+		@Comment({"Enable or disable twitch integration"})
 		public static boolean enabled = false;
-		public static String AppId = "";
-		@Comment({"The twitch channel to listen to"})
-		public static String clientSecret = "";
+
+		@Comment({"Optional client id, some functionality requires the client id"})
+		public static String clientId = "";
+
+		@Comment({"the username of the listener"})
+		public static String userName = "";
+
+		@Comment({"The oauth token to connect to the twitch irc"})
 		public static String IrcToken = "";
 
+		@Comment({"The twitch channel to listen to"})
 		public static String listenChannel = "";
 	}
 

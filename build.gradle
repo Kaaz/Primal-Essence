@@ -55,6 +55,7 @@ dependencies {
     // except that these dependencies get remapped to your current MCP mappings
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
 }
 
 processResources {

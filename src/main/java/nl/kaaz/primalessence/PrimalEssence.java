@@ -1,16 +1,18 @@
 package nl.kaaz.primalessence;
 
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.relauncher.Side;
 import nl.kaaz.primalessence.blocks.PEBlocks;
 import nl.kaaz.primalessence.configuration.Config;
 import nl.kaaz.primalessence.configuration.binder.ConfigBinder;
 import nl.kaaz.primalessence.configuration.binder.annotations.Ignore;
 import nl.kaaz.primalessence.items.PEItems;
 import nl.kaaz.primalessence.proxies.CommonProxy;
+import nl.kaaz.primalessence.threads.TwitchThread;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
@@ -27,7 +29,8 @@ public class PrimalEssence {
 
 	@SidedProxy(clientSide = "nl.kaaz.primalessence.proxies.ClientProxy", serverSide = "nl.kaaz.primalessence.proxies.ServerProxy")
 	public static CommonProxy proxy;
-	private Logger logger;
+	public static Logger logger;
+	private static TwitchThread twitchThread = null;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -40,6 +43,25 @@ public class PrimalEssence {
 		} catch (IllegalAccessException e) {
 			logger.fatal("Something is messed up during loading", e);
 		}
+	}
+
+	@Mod.EventHandler
+	public void serverStarted(FMLServerStartedEvent event) {
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+			World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
+			if (!world.isRemote && Config.Twitch.enabled) {
+				twitchThread = new TwitchThread();
+				twitchThread.start();
+			}
+		}
+	}
+
+	@Mod.EventHandler
+	public void serverStopped(FMLServerStoppingEvent event) {
+		if (twitchThread != null) {
+			twitchThread.interrupt();
+		}
+
 	}
 
 	@Mod.EventHandler
