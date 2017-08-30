@@ -17,6 +17,6 @@ public class TwitchListener extends TwitchBot {
 	protected void onMessage(String user, String channel, String message) {
 		PrimalEssence.logger.info(String.format("[%s] %s", user, message));
 		FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().sendMessage(
-				new TextComponentString(String.format("%s%s%s: %s", TextFormatting.DARK_PURPLE,user,TextFormatting.GRAY,message)));
+				new TextComponentString(String.format("%s%s%s: %s", TextFormatting.DARK_PURPLE, user, TextFormatting.GRAY, message)));
 	}
 }
