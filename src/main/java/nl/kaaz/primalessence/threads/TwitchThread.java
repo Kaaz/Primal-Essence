@@ -1,6 +1,5 @@
 package nl.kaaz.primalessence.threads;
 
-import net.minecraft.world.World;
 import nl.kaaz.primalessence.configuration.Config;
 import nl.kaaz.primalessence.integration.twitch.TwitchListener;
 
@@ -17,10 +16,14 @@ public class TwitchThread extends Thread {
 	public void run() {
 		twitchListener = new TwitchListener();
 		twitchListener.connect();
-		if (!Config.Twitch.listenChannel.startsWith("#")) {
-			Config.Twitch.listenChannel = "#" + Config.Twitch.listenChannel;
+		twitchListener.outputChannelNames(Config.Twitch.listenChannels.length > 1);
+		for (String channel : Config.Twitch.listenChannels) {
+			if (!channel.startsWith("#")) {
+				twitchListener.joinChannel("#"+channel);
+			} else {
+				twitchListener.joinChannel(channel);
+			}
 		}
-		twitchListener.joinChannel(Config.Twitch.listenChannel);
 		twitchListener.start();
 	}
 }

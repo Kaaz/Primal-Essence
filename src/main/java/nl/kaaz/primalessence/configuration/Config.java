@@ -23,8 +23,8 @@ public class Config {
 		@Comment({"The oauth token to connect to the twitch irc"})
 		public static String IrcToken = "";
 
-		@Comment({"The twitch channel to listen to"})
-		public static String listenChannel = "";
+		@Comment({"The twitch channels to listen to"})
+		public static String[] listenChannels = {""};
 	}
 
 	@Comment({"settings intended for debugging and/or development"})

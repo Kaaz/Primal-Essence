@@ -24,7 +24,7 @@ public class TestContainerBlock extends Block implements ITileEntityProvider {
 
 	public TestContainerBlock() {
 		super(Material.ROCK);
-		setUnlocalizedName(PrimalEssence.ID + ".testcontainerblock");
+			setUnlocalizedName(PrimalEssence.ID + ".testcontainerblock");
 		setRegistryName("testcontainerblock");
 	}
 
