@@ -10,6 +10,7 @@ import nl.kaaz.primalessence.blocks.PEBlocks;
 import nl.kaaz.primalessence.configuration.Config;
 import nl.kaaz.primalessence.configuration.binder.ConfigBinder;
 import nl.kaaz.primalessence.configuration.binder.annotations.Ignore;
+import nl.kaaz.primalessence.entities.PEEntities;
 import nl.kaaz.primalessence.items.PEItems;
 import nl.kaaz.primalessence.proxies.CommonProxy;
 import nl.kaaz.primalessence.threads.TwitchThread;
@@ -37,6 +38,7 @@ public class PrimalEssence {
 		logger = event.getModLog();
 		proxy.preInit(event);
 		ConfigBinder.preInit(event, Config.class);
+		PEEntities.init();
 		try {
 			initializeClass(PEBlocks.class, PEBlocks.instance);
 			initializeClass(PEItems.class, PEItems.instance);
