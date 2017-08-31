@@ -1,3 +1,5 @@
+My base/clone project to start making minecraft forge mods
+
 Experimental project
 ====================
 
