@@ -16,6 +16,7 @@ public class PEEntities {
 		EntityRegistry.registerModEntity(new ResourceLocation(PrimalEssence.ID), BasicGolem.class, "basicGolem", id++, PrimalEssence.instance, 64, 3, true, 0x996600, 0x00ff00);
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static void initModels() {
 		RenderingRegistry.registerEntityRenderingHandler(BasicGolem.class, RenderGolem.FACTORY);
 	}
