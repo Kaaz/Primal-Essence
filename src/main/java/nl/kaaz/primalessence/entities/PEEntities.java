@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import nl.kaaz.primalessence.PrimalEssence;
 import nl.kaaz.primalessence.entities.mob.BasicGolem;
-import nl.kaaz.primalessence.entities.mob.RenderGolem;
+import nl.kaaz.primalessence.entities.mob.renderer.RendererGolem;
 
 public class PEEntities {
 	public static void init() {
@@ -18,6 +18,6 @@ public class PEEntities {
 
 	@SideOnly(Side.CLIENT)
 	public static void initModels() {
-		RenderingRegistry.registerEntityRenderingHandler(BasicGolem.class, RenderGolem.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(BasicGolem.class, RendererGolem.FACTORY);
 	}
 }
