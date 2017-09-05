@@ -1,6 +1,7 @@
 package nl.kaaz.primalessence;
 
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -25,6 +26,7 @@ public class PrimalEssence {
 	public static final String NAME = "Primal Essence";
 	public static final String VERSION = "${version}";
 
+	public static GeneralEvents EVENTS = new GeneralEvents();
 	@Mod.Instance
 	public static PrimalEssence instance;
 
@@ -36,8 +38,8 @@ public class PrimalEssence {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		proxy.preInit(event);
 		ConfigBinder.preInit(event, Config.class);
+		proxy.preInit(event);
 		PEEntities.init();
 		try {
 			initializeClass(PEBlocks.class, PEBlocks.instance);
@@ -57,7 +59,9 @@ public class PrimalEssence {
 			}
 		}
 	}
-
+	public void relayMessage(String msg){
+		twitchThread.sendMessage(msg);
+	}
 	@Mod.EventHandler
 	public void serverStopped(FMLServerStoppingEvent event) {
 		if (twitchThread != null) {
@@ -69,6 +73,7 @@ public class PrimalEssence {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent e) {
 		proxy.init(e);
+		MinecraftForge.EVENT_BUS.register(PrimalEssence.EVENTS);
 	}
 
 	@Mod.EventHandler

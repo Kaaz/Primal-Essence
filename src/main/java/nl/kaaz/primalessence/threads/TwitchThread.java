@@ -19,11 +19,15 @@ public class TwitchThread extends Thread {
 		twitchListener.outputChannelNames(Config.Twitch.listenChannels.length > 1);
 		for (String channel : Config.Twitch.listenChannels) {
 			if (!channel.startsWith("#")) {
-				twitchListener.joinChannel("#"+channel);
+				twitchListener.joinChannel("#" + channel);
 			} else {
 				twitchListener.joinChannel(channel);
 			}
 		}
 		twitchListener.start();
+	}
+
+	public void sendMessage(String msg) {
+		twitchListener.sendMessage(msg,twitchListener.getChannels().get(0));
 	}
 }

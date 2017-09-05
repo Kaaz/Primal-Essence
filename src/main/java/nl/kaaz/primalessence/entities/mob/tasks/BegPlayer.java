@@ -17,7 +17,7 @@ public class BegPlayer extends EntityAIBase {
 
 	public BegPlayer(BasicGolem golem, float minDistance) {
 		this.golem = golem;
-		this.world = golem.world;
+		this.world = golem.getEntityWorld();
 		this.minPlayerDistance = minDistance;
 		this.setMutexBits(2);
 	}

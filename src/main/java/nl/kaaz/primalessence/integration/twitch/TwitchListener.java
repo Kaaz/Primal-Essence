@@ -8,7 +8,7 @@ import nl.kaaz.primalessence.PrimalEssence;
 import nl.kaaz.primalessence.configuration.Config;
 
 public class TwitchListener extends TwitchBot {
-	private static final String format_no_channel = TextFormatting.DARK_PURPLE + "@%s: " + TextFormatting.GRAY + "%s";
+	private static final String format_no_channel = TextFormatting.GOLD + "@%s" + TextFormatting.WHITE + ": " + TextFormatting.GRAY + "%s";
 	private static final String format_with_channel = TextFormatting.DARK_RED + "[%s] " + format_no_channel;
 	private boolean outputChannelNames = false;
 
@@ -26,7 +26,8 @@ public class TwitchListener extends TwitchBot {
 		} else {
 			out = new TextComponentString(String.format(format_no_channel, user, message));
 		}
-		FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().sendMessage(out);
+		FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().sendChatMsg(out);
+//		FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().sendMessage(out);
 	}
 
 	public void outputChannelNames(boolean outputChannelNames) {

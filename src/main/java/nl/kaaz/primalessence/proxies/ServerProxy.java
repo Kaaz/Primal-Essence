@@ -1,5 +1,10 @@
 package nl.kaaz.primalessence.proxies;
 
-public class ServerProxy extends CommonProxy {
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+public class ServerProxy extends CommonProxy {
+	@Override
+	public void preInit(FMLPreInitializationEvent e) {
+		super.preInit(e);
+	}
 }

@@ -37,7 +37,7 @@ public class ObservePlayer extends EntityAIBase {
 	 */
 	public void updateTask() {
 		--this.idleTime;
-		EntityPlayer entityPlayer = idleEntity.world.getClosestPlayerToEntity(idleEntity, 8);
+		EntityPlayer entityPlayer = idleEntity.getEntityWorld().getClosestPlayerToEntity(idleEntity, 8);
 		if (entityPlayer != null) {
 			this.idleEntity.getLookHelper().setLookPosition(entityPlayer.posX, entityPlayer.posY + entityPlayer.eyeHeight, entityPlayer.posZ, (float) this.idleEntity.getHorizontalFaceSpeed(),
 					(float) this.idleEntity.getVerticalFaceSpeed());
