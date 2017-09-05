@@ -23,7 +23,7 @@ public class TestContainerBlock extends Block implements ITileEntityProvider {
 	public static final int GUI_ID = 1;
 
 	public TestContainerBlock() {
-		super(Material.ROCK);
+		super(Material.WOOD);
 			setUnlocalizedName(PrimalEssence.ID + ".testcontainerblock");
 		setRegistryName("testcontainerblock");
 	}
